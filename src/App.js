@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import InputElement from './components/common/InputElement';
+import CardGrid from './components/common/CardGrid';
+import DropdownElement from './components/common/DropdownElement';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div className='container-md flexRow'>
+      <div className='margin-default'>
+        <InputElement></InputElement>
+        <DropdownElement></DropdownElement>
+      </div>
+      <div className="verticalLine"></div>
+      <div className='margin-default'>
+        <CardGrid></CardGrid>
+      </div>
     </div>
+    </>
   );
 }
 
