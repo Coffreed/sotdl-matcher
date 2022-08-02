@@ -1,16 +1,12 @@
 import React,{useState} from "react";
 import butcher from "../../images/butcher.jpg"
-import bestiary from "../../data/bestiaryData.json"
 
-const CardElement = () => {
-const [bestiaryData , setData] = useState(bestiary)
-
-return ( <>
-        {bestiaryData && bestiaryData.map(({ id, name, difficulty, size, frightening, horrifying, creatureType, 
-        perception, defense, health, strength, agility, intellect, will, speed, immune, traits, 
-        attackOptions, specialAttacks, specialActions, legendaryActions, endOfRound }) => (
-
-        <div key={id} className="col">
+const CardElement = ({data}) => {
+const { id, name, difficulty, size, frightening, horrifying, creatureType, 
+    perception, defense, health, strength, agility, intellect, will, speed, immune, traits, 
+    attackOptions, specialAttacks, specialActions, legendaryActions, endOfRound } = data;
+return (
+        <div className="col">
             <div className="card">
             <img src={butcher} className="card-img-top" alt="..." />
             <div className="card-body">
@@ -105,8 +101,6 @@ return ( <>
             </div>
             </div>
         </div>
-        ))}
-    </>
     );
 }
 

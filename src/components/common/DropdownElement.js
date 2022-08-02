@@ -1,10 +1,7 @@
 import React,{useState} from "react";
 import bestiary from "../../data/bestiaryData.json";
 
-const DropdownElement = () => {
-const [tags, setTags] = useState([])
-const uniqueTagIds = [];
-
+const DropdownElement = ({onChange, selectedValue}) => {
 const uniqueBeastIds = [];
 const [isActive, setIsActive] = useState(false);
 const onClick = () => setIsActive(!isActive);
@@ -18,26 +15,16 @@ const uniqueBeasts = bestiary.filter(element => {
     return false;
 });
 
-function removeType(e) {
-    e.target.innerText = '';
+function removeType(tag) {
+    const newList = selectedValue.filter(element => {
+        return element !== tag;
+    });
+    onChange(newList);
 }
 
 function handleAddition(tag) {
-    const value = tag.target.innerText;
-    var names = tags.map(({name}) => name);
-    console.log(uniqueTagIds, "uniqueTagIds");
-    if(!value.trim()){ 
-        console.log(value, "Trim");
-        return; 
-    } 
-    else if (value === uniqueTagIds) {
-        console.log(tag.name, "Tag name");
-        console.log(names, "NAMES");
-        console.log(value, "print");
-        return;
-    } else {
-        uniqueTagIds.push(value);
-        return setTags([...tags, value]);
+    if(!selectedValue.includes(tag)){
+        onChange([...selectedValue, tag]);
     }
 }
 
@@ -50,16 +37,16 @@ return ( <>
             <ul className={`menu ${isActive ? 'active' : 'inactive'}`}>
                 {uniqueBeasts.map(bestiary => {
                 return (
-                <a key={bestiary.id} onClick={handleAddition} className="dropdown-item" value={bestiary.creatureType}>{bestiary.creatureType}</a>
+                <a key={bestiary.id} onClick={()=>handleAddition(bestiary.creatureType)} className="dropdown-item">{bestiary.creatureType}</a>
                 )
                 })}
             </ul>
             
         </div>
         <div className="tags-input-container">
-            { tags.map((tag, index) => (
-                <div className="tag-item" key={index}>
-                    <span id="tag" onClick={removeType} className="text">{tag}</span>
+            { selectedValue.map((tag) => (
+                <div className="tag-item" key={tag}>
+                    <span id="tag" onClick={()=>removeType(tag)} className="text">{tag}</span>
                 </div>
             )) }
         </div>
