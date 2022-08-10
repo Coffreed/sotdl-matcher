@@ -149,3 +149,7 @@ code {
 .menu-trigger img {
   border-radius: 90px;
 }
+
+.tags-input-container {
+  margin-top: 7rem;
+}

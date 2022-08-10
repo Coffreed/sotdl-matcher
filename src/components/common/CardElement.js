@@ -16,87 +16,87 @@ return (
                 </div>
 
                 <div className="flexRow bg-crimson ">
-                <p className="card-title i gap gap-l">Size {size}</p>
-                <p className="card-title i remove-bottom-margin">{ frightening ? <p className="card-title i gap">frightening</p> : null }</p>
-                <p className="card-title i remove-bottom-margin">{ horrifying ? <p className="card-title i gap">horrifying</p> : null }</p>
-                <p className="card-title i">{creatureType}</p>
+                <span className="card-title i gap gap-l">Size {size}</span>
+                <span className="card-title i remove-bottom-margin">{ frightening ? <span className="card-title i gap">frightening</span> : null }</span>
+                <span className="card-title i remove-bottom-margin">{ horrifying ? <span className="card-title i gap">horrifying</span> : null }</span>
+                <span className="card-title i">{creatureType}</span>
                 </div>
 
                 <div className="flexRow">
-                <p className="card-text b gap remove-bottom-margin">Perception</p>
-                <p className="card-text">{perception}</p>
+                <span className="card-text b gap remove-bottom-margin">Perception</span>
+                <span className="card-text">{perception}</span>
                 </div>
                 <div className="flexRow">
-                <p className="card-text b gap remove-bottom-margin">Defense</p>
-                <p className="card-text gap remove-bottom-margin">{defense}</p>
-                <p className="card-text b gap remove-bottom-margin">Health</p>
-                <p className="card-text remove-bottom-margin">{health}</p>
+                <span className="card-text b gap remove-bottom-margin">Defense</span>
+                <span className="card-text gap remove-bottom-margin">{defense}</span>
+                <span className="card-text b gap remove-bottom-margin">Health</span>
+                <span className="card-text remove-bottom-margin">{health}</span>
                 </div>
                 <div className="flexRow">
-                <p className="card-text b gap remove-bottom-margin">Strength</p>
-                <p className="card-text gap remove-bottom-margin">{strength}</p>
-                <p className="card-text b gap remove-bottom-margin">Agility</p>
-                <p className="card-text gap remove-bottom-margin">{agility}</p>
-                <p className="card-text b gap remove-bottom-margin">Intellect</p>
-                <p className="card-text gap remove-bottom-margin">{intellect}</p>
-                <p className="card-text b gap remove-bottom-margin">Will</p>
-                <p className="card-text gap remove-bottom-margin">{will}</p>
+                <span className="card-text b gap remove-bottom-margin">Strength</span>
+                <span className="card-text gap remove-bottom-margin">{strength}</span>
+                <span className="card-text b gap remove-bottom-margin">Agility</span>
+                <span className="card-text gap remove-bottom-margin">{agility}</span>
+                <span className="card-text b gap remove-bottom-margin">Intellect</span>
+                <span className="card-text gap remove-bottom-margin">{intellect}</span>
+                <span className="card-text b gap remove-bottom-margin">Will</span>
+                <span className="card-text gap remove-bottom-margin">{will}</span>
                 </div>
                 <div className="flexRow">
-                <p className="card-text b gap remove-bottom-margin">Speed</p>
-                <p className="card-text">{speed}</p>
+                <span className="card-text b gap remove-bottom-margin">Speed</span>
+                <span className="card-text">{speed}</span>
                 </div>
                 <div className="flexRow">
-                <p className="card-text">{ immune ? <div className="flexRow">
-                <p className="card-text b gap remove-bottom-margin">Immune</p>
-                <p className="card-text remove-bottom-margin">{immune}</p>
-                </div> : null }</p>
+                <span className="card-text">{ immune ? <div className="flexRow">
+                <span className="card-text b gap remove-bottom-margin">Immune</span>
+                <span className="card-text remove-bottom-margin">{immune}</span>
+                </div> : null }</span>
                 </div>
                 <div className="flexRow">
-                <p className="card-text">{ traits ? <div className="flexRow">
-                <p className="card-text remove-bottom-margin br">{traits}</p>
-                </div> : null }</p>
+                <span className="card-text">{ traits ? <div className="flexRow">
+                <span className="card-text remove-bottom-margin br">{traits}</span>
+                </div> : null }</span>
                 </div>
 
                 <div className="flexRow add-top-margin bg-gray">
-                <p className="card-text b remove-bottom-margin gap-l">ATTACK OPTIONS</p>
+                <span className="card-text b remove-bottom-margin gap-l">ATTACK OPTIONS</span>
                 </div>
-                <p className="card-text remove-bottom-margin br">{attackOptions}</p>
+                <span className="card-text remove-bottom-margin br">{attackOptions}</span>
 
-                <p className="card-text remove-bottom-margin">{ specialAttacks ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <p className="card-text b remove-bottom-margin gap-l">SPECIAL ATTACKS</p>
-                </div> : null }</p>
+                <span className="card-text remove-bottom-margin">{ specialAttacks ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                <span className="card-text b remove-bottom-margin gap-l">SPECIAL ATTACKS</span>
+                </div> : null }</span>
                 <div className="flexRow">
-                <p className="card-text">{ specialAttacks ? <div className="flexRow">
-                <p className="card-text remove-bottom-margin br">{specialAttacks}</p>
-                </div> : null }</p>
-                </div>
-
-                <p className="card-text remove-bottom-margin">{ specialActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <p className="card-text b remove-bottom-margin gap-l">SPECIAL ACTIONS</p>
-                </div> : null }</p>
-                <div className="flexRow">
-                <p className="card-text">{ specialActions ? <div className="flexRow">
-                <p className="card-text remove-bottom-margin br">{specialActions}</p>
-                </div> : null }</p>
+                <span className="card-text">{ specialAttacks ? <div className="flexRow">
+                <span className="card-text remove-bottom-margin br">{specialAttacks}</span>
+                </div> : null }</span>
                 </div>
 
-                <p className="card-text remove-bottom-margin">{ legendaryActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <p className="card-text b remove-bottom-margin gap-l">LEGENDARY ACTIONS</p>
-                </div> : null }</p>
+                <span className="card-text remove-bottom-margin">{ specialActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                <span className="card-text b remove-bottom-margin gap-l">SPECIAL ACTIONS</span>
+                </div> : null }</span>
                 <div className="flexRow">
-                <p className="card-text">{ legendaryActions ? <div className="flexRow">
-                <p className="card-text remove-bottom-margin br">{legendaryActions}</p>
-                </div> : null }</p>
+                <span className="card-text">{ specialActions ? <div className="flexRow">
+                <span className="card-text remove-bottom-margin br">{specialActions}</span>
+                </div> : null }</span>
                 </div>
 
-                <p className="card-text remove-bottom-margin">{ endOfRound ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <p className="card-text b remove-bottom-margin gap-l">END OF THE ROUND</p>
-                </div> : null }</p>
+                <span className="card-text remove-bottom-margin">{ legendaryActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                <span className="card-text b remove-bottom-margin gap-l">LEGENDARY ACTIONS</span>
+                </div> : null }</span>
                 <div className="flexRow">
-                <p className="card-text">{ endOfRound ? <div className="flexRow">
-                <p className="card-text remove-bottom-margin br">{endOfRound}</p>
-                </div> : null }</p>
+                <span className="card-text">{ legendaryActions ? <div className="flexRow">
+                <span className="card-text remove-bottom-margin br">{legendaryActions}</span>
+                </div> : null }</span>
+                </div>
+
+                <span className="card-text remove-bottom-margin">{ endOfRound ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                <span className="card-text b remove-bottom-margin gap-l">END OF THE ROUND</span>
+                </div> : null }</span>
+                <div className="flexRow">
+                <span className="card-text">{ endOfRound ? <div className="flexRow">
+                <span className="card-text remove-bottom-margin br">{endOfRound}</span>
+                </div> : null }</span>
                 </div>
             </div>
             </div>
