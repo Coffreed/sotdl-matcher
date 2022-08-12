@@ -4,8 +4,6 @@ const InputElement = ({onChange, inputedValue}) => {
 
     function handleAddition(e) {
         if(e.key === 'Enter'){
-            console.log('hello this is input element', inputedValue);
-            console.log('thetarget value', e.target.value);
             inputedValue = e.target.value;
             onChange(inputedValue);
         } 

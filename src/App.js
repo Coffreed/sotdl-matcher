@@ -11,21 +11,11 @@ function App() {
 
   useEffect(()=>{
     console.log('input VALUE', inputedDifficulty);
-    // if(selectedType.length === 0 && inputedDifficulty.length === 0){
-    //   console.log('inputted lenght IF', inputedDifficulty);
-    //   setCardList(bestiary);
-    // } 
-    if (inputedDifficulty.length !== 0){
-      console.log('APP else if input lenght', inputedDifficulty.length);
+    if(selectedType.length === 0 && inputedDifficulty.length === 0){
+      setCardList(bestiary);
+    } else {
       const filteredList = bestiary.filter((best) => {
-        console.log('APP filter input difficulty', inputedDifficulty, best.difficulty);
-        return inputedDifficulty.includes(best.difficulty);
-      })
-      setCardList(filteredList);
-    } 
-    else {
-      const filteredList = bestiary.filter((best) => {
-        return selectedType.includes(best.creatureType);
+        return selectedType.includes(best.creatureType) || inputedDifficulty.includes(best.difficulty);
       })
       setCardList(filteredList);
     }
