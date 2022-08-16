@@ -10,14 +10,15 @@ function App() {
   const [inputedDifficulty, setInputedDifficulty] = useState([]);
 
   useEffect(()=>{
-    console.log('input VALUE', inputedDifficulty);
-    if(selectedType.length === 0 && inputedDifficulty.length === 0){
-      setCardList(bestiary);
-    } else {
+    if (selectedType.length !== 0 || inputedDifficulty.length !== 0){
       const filteredList = bestiary.filter((best) => {
-        return selectedType.includes(best.creatureType) || inputedDifficulty.includes(best.difficulty);
+        const isDifficulty = inputedDifficulty.length === 0 || parseInt(inputedDifficulty) === best.difficulty;
+        const isSelectedType = selectedType.length === 0 || selectedType.includes(best.creatureType);
+        return isSelectedType && isDifficulty;
       })
       setCardList(filteredList);
+    } else {
+      setCardList(bestiary);
     }
   }, [selectedType, inputedDifficulty])
 
