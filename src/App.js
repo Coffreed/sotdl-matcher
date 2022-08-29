@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import InputElement from './components/common/InputElement';
 import CardGrid from './components/common/CardGrid';
+import SearchElement from './components/common/SearchElement';
 import DropdownElement from './components/common/DropdownElement';
 import bestiary from './data/bestiaryData.json'
 
@@ -8,10 +9,11 @@ function App() {
   const [cardList, setCardList] = useState(false);
   const [selectedType, setSelectedType] = useState([]);
   const [inputedDifficulty, setInputedDifficulty] = useState([]);
+  const [searchByName, setSearch] = useState([]);
 
   useEffect(()=>{
     const totalGenerator = Math.floor(Math.random() * 2);
-    if ((selectedType.length !== 0 || inputedDifficulty.length !== 0)){
+    if ((selectedType.length !== 0 || inputedDifficulty.length !== 0 || searchByName.length !== 0)){
       const parseInput = parseInt(inputedDifficulty);
       const getOnes = bestiary.filter(best => {
         return best.difficulty === 1;
@@ -50,11 +52,13 @@ function App() {
       console.log(getFiftysTotal);
       console.log('THE INPUT', parseInput);
 
-      if (parseInput === getOnesTotal || (parseInput === getTensTotal && totalGenerator === 1) || (parseInput === getTwentyFivesTotal && totalGenerator === 1)){
+      if (parseInput === getOnesTotal || (parseInput === getTensTotal && totalGenerator === 1) || (parseInput === getTwentyFivesTotal && totalGenerator === 1) ||
+      selectedType.length !== 0 || searchByName.length !== 0){
         const filteredList = bestiary.filter((best) => {
           const isDifficulty = inputedDifficulty.length === 0 || parseInt(inputedDifficulty) > best.difficulty;
           const isSelectedType = selectedType.length === 0 || selectedType.includes(best.creatureType);
-          return isSelectedType && isDifficulty;
+          const isNamed = searchByName.length === 0 || searchByName.includes(best.name);
+          return isSelectedType && isDifficulty && isNamed;
         })
         filteredList.sort(() => 0.5 - Math.random());
         filteredList.sort((a, b) => b.difficulty - a.difficulty);
@@ -71,7 +75,8 @@ function App() {
         const filteredList2 = bestiary.filter((best) => {
           const isDifficulty = parseInt(inputedDifficulty) === best.difficulty;
           const isSelectedType = selectedType.length === 0 || selectedType.includes(best.creatureType);
-          return isSelectedType && isDifficulty;
+          const isNamed = searchByName.length === 0 || searchByName.includes(best.name);
+          return isSelectedType && isDifficulty && isNamed;
         })
         filteredList2.sort(() => 0.5 - Math.random());
         filteredList2.sort((a, b) => b.difficulty - a.difficulty);
@@ -131,7 +136,7 @@ function App() {
     } else {
       setCardList(bestiary);
     }
-  }, [selectedType, inputedDifficulty])
+  }, [selectedType, inputedDifficulty, searchByName])
 
   function onSelectedTypeChange(creatureTypeList){
     setSelectedType(creatureTypeList);
@@ -141,10 +146,15 @@ function App() {
     setInputedDifficulty(difficultyNumber);
   }
 
+  function onSearchChange(name){
+    setSearch(name);
+  }
+
   return (
     <>
     <div className='container-md flexRow'>
       <div className='margin-default'>
+        <SearchElement onChange={onSearchChange} inputedValue={searchByName}/>
         <InputElement onChange={onInputedChange} inputedValue={inputedDifficulty}/>
         <DropdownElement onChange={onSelectedTypeChange} selectedValue={selectedType}/>
       </div>
