@@ -1,15 +1,22 @@
-import React,{useState} from "react";
+import React, {useState} from "react";
 import butcher from "../../images/butcher.jpg"
 
 const CardElement = ({data}) => {
-const { id, name, difficulty, size, frightening, horrifying, creatureType, 
-    perception, defense, health, strength, agility, intellect, will, speed, immune, traits, 
-    attackOptions, specialAttacks, specialActions, legendaryActions, endOfRound } = data;
-return (
+    const { id, name, difficulty, size, frightening, horrifying, creatureType, 
+        perception, defense, health, strength, agility, intellect, will, speed, immune, traits, 
+        attackOptions, specialAttacks, specialActions, legendaryActions, endOfRound } = data;
+
+    const [isToggled, setToggle] = useState(true);
+    const toggleButton = () => {
+        setToggle(prevState => !prevState)
+    };
+
+    return (
         <div className="col">
             <div className="card">
             <img src={butcher} className="card-img-top" alt="..." />
             <div className="card-body">
+            
                 <div className="flexRow bg-black">
                 <h5 className="card-title gap-l">{name}</h5> 
                 <h5 className="card-title c-right gap">Difficulty: {difficulty}</h5>
@@ -46,58 +53,114 @@ return (
                 <span className="card-text b gap remove-bottom-margin">Speed</span>
                 <span className="card-text">{speed}</span>
                 </div>
-                <div className="flexRow">
-                <span className="card-text">{ immune ? <div className="flexRow">
-                <span className="card-text b gap remove-bottom-margin">Immune</span>
-                <span className="card-text remove-bottom-margin">{immune}</span>
-                </div> : null }</span>
-                </div>
-                <div className="flexRow">
-                <span className="card-text">{ traits ? <div className="flexRow">
-                <span className="card-text remove-bottom-margin br">{traits}</span>
-                </div> : null }</span>
-                </div>
+                
+                <br/>
+                
+                 {isToggled ? <div className='toggle-container-no'>
+                 <div className="flexRow">
+                    <span className="card-text">{ immune ? <div className="flexRow">
+                    <span className="card-text b gap remove-bottom-margin">Immune</span>
+                    <span className="card-text remove-bottom-margin">{immune}</span>
+                    </div> : null }</span>
+                    </div>
+                    <div className="flexRow">
+                    <span className="card-text">{ traits ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{traits}</span>
+                    </div> : null }</span>
+                    </div>
+                    <div className="flexRow add-top-margin bg-gray">
+                    <span className="card-text b remove-bottom-margin gap-l">ATTACK OPTIONS</span>
+                    </div>
+                    <span className="card-text remove-bottom-margin br">{attackOptions}</span>
+                    <span className="card-text remove-bottom-margin">{ specialAttacks ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">SPECIAL ATTACKS</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ specialAttacks ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{specialAttacks}</span>
+                    </div> : null }</span>
+                    </div>
+                    <span className="card-text remove-bottom-margin">{ specialActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">SPECIAL ACTIONS</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ specialActions ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{specialActions}</span>
+                    </div> : null }</span>
+                    </div>
 
-                <div className="flexRow add-top-margin bg-gray">
-                <span className="card-text b remove-bottom-margin gap-l">ATTACK OPTIONS</span>
-                </div>
-                <span className="card-text remove-bottom-margin br">{attackOptions}</span>
+                    <span className="card-text remove-bottom-margin">{ legendaryActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">LEGENDARY ACTIONS</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ legendaryActions ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{legendaryActions}</span>
+                    </div> : null }</span>
+                    </div>
 
-                <span className="card-text remove-bottom-margin">{ specialAttacks ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <span className="card-text b remove-bottom-margin gap-l">SPECIAL ATTACKS</span>
-                </div> : null }</span>
-                <div className="flexRow">
-                <span className="card-text">{ specialAttacks ? <div className="flexRow">
-                <span className="card-text remove-bottom-margin br">{specialAttacks}</span>
-                </div> : null }</span>
-                </div>
+                    <span className="card-text remove-bottom-margin">{ endOfRound ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">END OF THE ROUND</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ endOfRound ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{endOfRound}</span>
+                    </div> : null }</span>
+                    </div>
+                    </div> 
+                    : 
+                    <div className='toggle-container-yes'>
+                    <div className="flexRow">
+                    <span className="card-text">{ immune ? <div className="flexRow">
+                    <span className="card-text b gap remove-bottom-margin">Immune</span>
+                    <span className="card-text remove-bottom-margin">{immune}</span>
+                    </div> : null }</span>
+                    </div>
+                    <div className="flexRow">
+                    <span className="card-text">{ traits ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{traits}</span>
+                    </div> : null }</span>
+                    </div>
+                    <div className="flexRow add-top-margin bg-gray">
+                    <span className="card-text b remove-bottom-margin gap-l">ATTACK OPTIONS</span>
+                    </div>
+                    <span className="card-text remove-bottom-margin br">{attackOptions}</span>
+                    <span className="card-text remove-bottom-margin">{ specialAttacks ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">SPECIAL ATTACKS</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ specialAttacks ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{specialAttacks}</span>
+                    </div> : null }</span>
+                    </div>
+                    <span className="card-text remove-bottom-margin">{ specialActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">SPECIAL ACTIONS</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ specialActions ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{specialActions}</span>
+                    </div> : null }</span>
+                    </div>
 
-                <span className="card-text remove-bottom-margin">{ specialActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <span className="card-text b remove-bottom-margin gap-l">SPECIAL ACTIONS</span>
-                </div> : null }</span>
-                <div className="flexRow">
-                <span className="card-text">{ specialActions ? <div className="flexRow">
-                <span className="card-text remove-bottom-margin br">{specialActions}</span>
-                </div> : null }</span>
-                </div>
+                    <span className="card-text remove-bottom-margin">{ legendaryActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">LEGENDARY ACTIONS</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ legendaryActions ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{legendaryActions}</span>
+                    </div> : null }</span>
+                    </div>
 
-                <span className="card-text remove-bottom-margin">{ legendaryActions ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <span className="card-text b remove-bottom-margin gap-l">LEGENDARY ACTIONS</span>
-                </div> : null }</span>
-                <div className="flexRow">
-                <span className="card-text">{ legendaryActions ? <div className="flexRow">
-                <span className="card-text remove-bottom-margin br">{legendaryActions}</span>
-                </div> : null }</span>
+                    <span className="card-text remove-bottom-margin">{ endOfRound ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
+                    <span className="card-text b remove-bottom-margin gap-l">END OF THE ROUND</span>
+                    </div> : null }</span>
+                    <div className="flexRow">
+                    <span className="card-text">{ endOfRound ? <div className="flexRow">
+                    <span className="card-text remove-bottom-margin br">{endOfRound}</span>
+                    </div> : null }</span>
+                    </div>
                 </div>
-
-                <span className="card-text remove-bottom-margin">{ endOfRound ? <div className="flexRow add-top-margin bg-gray remove-bottom-margin">
-                <span className="card-text b remove-bottom-margin gap-l">END OF THE ROUND</span>
-                </div> : null }</span>
-                <div className="flexRow">
-                <span className="card-text">{ endOfRound ? <div className="flexRow">
-                <span className="card-text remove-bottom-margin br">{endOfRound}</span>
-                </div> : null }</span>
-                </div>
+                }
+                <button onClick={toggleButton} className='toggle-button'>{isToggled ? "Show" : "Hide"}</button>
             </div>
             </div>
         </div>
