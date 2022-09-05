@@ -54,8 +54,6 @@ const CardElement = ({data}) => {
                 <span className="card-text">{speed}</span>
                 </div>
                 
-                <br/>
-                
                  {isToggled ? <div className='toggle-container-no'>
                  <div className="flexRow">
                     <span className="card-text">{ immune ? <div className="flexRow">
