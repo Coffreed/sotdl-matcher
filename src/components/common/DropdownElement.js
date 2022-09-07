@@ -28,8 +28,9 @@ function handleAddition(tag) {
     }
 }
 
-return ( <>
-        <div className="dropdown btn-group me-1">
+return ( 
+    <div className="dropdown-container">
+        <div className="dropdown">
             <button onClick={onClick} type="button" className="btn btn-secondary dropdown-toggle margin-default" id="dropdownMenuOffset" placeholder="Select creature type">
                 Select creature type
             </button>
@@ -41,16 +42,16 @@ return ( <>
                 )
                 })}
             </ul>
-            
         </div>
         <div className="tags-input-container">
+            Tags:
             { selectedValue.map((tag) => (
                 <div className="tag-item" key={tag}>
                     <span id="tag" onClick={()=>removeType(tag)} className="text">{tag}</span>
                 </div>
             )) }
         </div>
-        </>
+    </div>
     )
 }
 export default DropdownElement;
