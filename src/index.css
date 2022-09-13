@@ -5,6 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+}
+
+hr {
+  background-color: white;
+}
+
+.card-body{
+  background-color: #d1d6dd;
+}
+
+.card-img-top{
+  max-height: 184px;
 }
 
 code {
@@ -14,6 +27,14 @@ code {
 
 .margin-default {
   margin-top: 2rem;
+}
+
+.span-text-color-main {
+  color: white;
+}
+
+.span-text-spacing {
+  padding-right: 4rem;
 }
 
 .remove-bottom-margin {
@@ -36,8 +57,8 @@ code {
 .verticalLine {
   align-self: stretch;
   display: block;
-  width: 1px;
-  background-color: currentColor;
+  padding: 1px;
+  background-color: white;
   opacity: .25;
   margin: 0 1rem;
 }
@@ -69,6 +90,7 @@ code {
 .bg-black {
   background-color: black;
   color: white;
+  padding-top: 5px;
 }
 
 .bg-crimson {
@@ -76,8 +98,12 @@ code {
   color: white;
 }
 
+.font {
+  font-size: large;
+}
+
 .bg-gray {
-  background-color: lightgray;
+  background-color: rgba(151 151 151 / 75%);
 }
 
 .br {
@@ -159,6 +185,7 @@ code {
   border: 7px;
   border-radius: 1rem;
   background-color: rgba(151 151 151 / 75%);
+  color: white;
   padding: 5px;
   margin-top: 1px;
   margin-bottom: 1px;
@@ -168,8 +195,8 @@ code {
   margin-left: 2rem;
   border: 7px;
   border-radius: 1rem;
-  background-color: rgb(0 0 0 / 67%);
-  color: white;
+  background-color: #d7dbe3;
+  color: black;
   padding: 5px;
   margin-top: 1px;
   margin-bottom: 1px;

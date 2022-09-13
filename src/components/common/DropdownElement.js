@@ -44,7 +44,7 @@ return (
             </ul>
         </div>
         <div className="tags-input-container">
-            Tags:
+            <span className="span-text-color-main span-text-spacing">Tags:</span>
             { selectedValue.map((tag) => (
                 <div className="tag-item" key={tag}>
                     <span id="tag" onClick={()=>removeType(tag)} className="text">{tag}</span>

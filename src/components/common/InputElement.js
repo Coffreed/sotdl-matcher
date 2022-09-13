@@ -18,7 +18,7 @@ const InputElement = ({onChange, inputedValue}) => {
         placeholder='Enter difficulty' type="text" className="form-control" aria-label="Difficulty" aria-describedby="basic-addon1" />
         </div>
         <hr />
-        Difficulty: {inputedValue}
+        <span className="span-text-color-main">Difficulty: {inputedValue}</span>
     </>
 };
 

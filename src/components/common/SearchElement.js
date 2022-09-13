@@ -10,7 +10,7 @@ const SearchElement = ({onChange, inputedValue}) => {
     }
 
     return <>
-        Search Name: {inputedValue}
+        <span className="span-text-color-main">Search Name: {inputedValue}</span>
         <hr />
         <div className="input-group">
         <span className="input-group-text" id="inputGroup-sizing-lg">Name</span>
