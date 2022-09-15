@@ -12,6 +12,7 @@ import clockwork from "../../images/clockwork.PNG"
 import construct from "../../images/construct.jpg"
 import demon1 from "../../images/demon1.PNG"
 import dwarf from "../../images/dwarf.PNG"
+import fungus from "../../images/fungus.PNG"
 
 const CardElement = ({data}) => {
     const { id, name, difficulty, size, frightening, horrifying, creatureType, 
@@ -37,8 +38,8 @@ const CardElement = ({data}) => {
             <span>{ creatureType === "monster" ? <img src={monster} className="card-img-top" alt="..." /> : null }</span>
             <span>{ creatureType === "clockwork" ? <img src={clockwork} className="card-img-top" alt="..." /> : null }</span>
             <span>{ creatureType === "construct" ? <img src={construct} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "construct" ? <img src={construct} className="card-img-top" alt="..." /> : null }</span>
             <span>{ creatureType === "dwarf" ? <img src={dwarf} className="card-img-top" alt="..." /> : null }</span>
+            <span>{ creatureType === "fungus" ? <img src={fungus} className="card-img-top" alt="..." /> : null }</span>
             <div className="card-body">
             
                 <div className="flexRow bg-black">
