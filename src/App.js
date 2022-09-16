@@ -12,31 +12,42 @@ function App() {
   const [searchByName, setSearch] = useState([]);
 
   useEffect(()=>{
+    // generates a random number 0 or 1 for filter
     const totalGenerator = Math.floor(Math.random() * 2);
+    // primarily detects input
     if ((selectedType.length !== 0 || inputedDifficulty.length !== 0 || searchByName.length !== 0)){
+      // stores input value
       const parseInput = parseInt(inputedDifficulty);
+      // filteres & stores difficulty 1 monsters
       const getOnes = bestiary.filter(best => {
         return best.difficulty === 1;
       });
+      // filteres & stores difficulty 10 monsters
       const getTens = bestiary.filter(best => {
         return best.difficulty === 10;
       });
+      // filteres & stores difficulty 25 monsters
       const getTwentyFives = bestiary.filter(best => {
         return best.difficulty === 25;
       });
+      // filteres & stores difficulty 50 monsters
       const getFiftys = bestiary.filter(best => {
         return best.difficulty === 50;
       });
+      // filteres & stores difficulty 100 monsters
       const getHundreds = bestiary.filter(best => {
         return best.difficulty === 100;
       });
+      // filteres & stores difficulty 250 monsters
       const getTwoHundredFiftys = bestiary.filter(best => {
         return best.difficulty === 250;
       });
+      // filteres & stores difficulty 500 monsters
       const getFiveHundreds = bestiary.filter(best => {
         return best.difficulty === 500;
       });
 
+      // totals & stores the values of all difficulties
       const getOnesTotal = getOnes.reduce((a, b) => a = a + b.difficulty, 0);
       const getTensTotal = getTens.reduce((a, b) => a = a + b.difficulty, 0);
       const getTwentyFivesTotal = getTwentyFives.reduce((a, b) => a = a + b.difficulty, 0);
@@ -45,20 +56,6 @@ function App() {
       const getTwoHundredFiftysTotal = getTwoHundredFiftys.reduce((a, b) => a = a + b.difficulty, 0);
       const getFiveHundredTotal = getFiveHundreds.reduce((a, b) => a = a + b.difficulty, 0);
 
-
-      // const poss1 = getOnesTotal + getTensTotal;
-      // const poss2 = getOnesTotal + getTwentyFivesTotal;
-      // const poss3 = getOnesTotal + getFiftysTotal;
-      // const poss4 = getTensTotal + getTwentyFivesTotal;
-      // const poss5 = getTensTotal + getFiftysTotal;
-      // const poss6 = getTwentyFivesTotal + getFiftysTotal;
-        
-      // console.log(parseInput, poss1);
-      // console.log(parseInput, poss2);
-      // console.log(parseInput, poss3);
-      // console.log(parseInput, poss4);
-      // console.log(parseInput, poss5);
-      // console.log(parseInput, poss6);
       console.log(getOnesTotal, "1");
       console.log(getTensTotal, "10");
       console.log(getTwentyFivesTotal, "25");
@@ -68,22 +65,52 @@ function App() {
       console.log(getFiveHundredTotal, "500");
       console.log('THE INPUT', parseInput);
 
+      // detects parse input value and tries to match it with totals
       if (parseInput === getOnesTotal || (parseInput === getTensTotal && totalGenerator === 1) || (parseInput === getTwentyFivesTotal && totalGenerator === 1) ||
       selectedType.length !== 0 || searchByName.length !== 0 || parseInput === getFiftysTotal || parseInput === getHundredsTotal || 
       (parseInput === getTwoHundredFiftysTotal && totalGenerator === 1) || parseInput === getFiveHundredTotal){
+        // filter looks to display result that was in criteria
         const filteredList = bestiary.filter((best) => {
-          const isDifficulty = inputedDifficulty.length === 0 || parseInt(inputedDifficulty) > best.difficulty;
+          // checks & stores if difficulty was input and checks if the value was less than inputed value
+          const isDifficulty = inputedDifficulty.length === 0 || parseInput > best.difficulty;
+          // checks & stores if selected type was input and matches with the creature type
           const isSelectedType = selectedType.length === 0 || selectedType.includes(best.creatureType);
+          // checks & stores if search by name was input and matches with the name of the creature
           const isNamed = searchByName.length === 0 || searchByName.includes(best.name);
           return isSelectedType && isDifficulty && isNamed;
         })
+        // sorts result in random
         filteredList.sort(() => 0.5 - Math.random());
+        // sorts result by highest difficulty accessible
         filteredList.sort((a, b) => b.difficulty - a.difficulty);
+        console.log(filteredList, 'CHECK HOW it is filtering')
+        // totals and stores total amount of all difficulties in data
         const totalDifficultyFilteredList = filteredList.reduce((a, b) => a = a + b.difficulty, 0);
         console.log('totalDifficultyFilteredList', totalDifficultyFilteredList);
+        // checks if total difficulty in filtered list is less than inputted value
         if (totalDifficultyFilteredList > parseInput) {
-          const chop = filteredList.slice(0, 3);
-          return setCardList(chop);
+          const matchOnes = getOnes.length * 1;
+          const matchTens = getTens.length * 10;
+          const matchTwentyFives = getTwentyFives.length * 25;
+          const matchFiftys = getFiftys.length * 50;
+          const matchHundreds = getHundreds.length * 100;
+          const matchTwoHundredFiftys = getTwoHundredFiftys.length * 250;
+          const matchFiveHundreds = getFiveHundreds.length * 500;
+          if (parseInput === matchOnes) {
+            return setCardList(getOnes);
+          } else if (parseInput === matchTens) {
+            return setCardList(getTens);
+          } else if (parseInput === matchTwentyFives) {
+            return setCardList(getTwentyFives);
+          } else if (parseInput === matchFiftys) {
+            return setCardList(getFiftys);
+          } else if (parseInput === matchHundreds) {
+            return setCardList(getHundreds);
+          } else if (parseInput === matchTwoHundredFiftys) {
+            return setCardList(getTwoHundredFiftys);
+          } else if (parseInput === matchFiveHundreds) {
+            return setCardList(getFiveHundreds);
+          }
         } else {
           setCardList(filteredList);
         }
@@ -91,7 +118,7 @@ function App() {
         setCardList(filteredList);
       } else {
         const filteredList2 = bestiary.filter((best) => {
-          const isDifficulty = parseInt(inputedDifficulty) === best.difficulty;
+          const isDifficulty = parseInput === best.difficulty;
           const isSelectedType = selectedType.length === 0 || selectedType.includes(best.creatureType);
           const isNamed = searchByName.length === 0 || searchByName.includes(best.name);
           return isSelectedType && isDifficulty && isNamed;
@@ -101,56 +128,6 @@ function App() {
         const returnedBeast = filteredList2.slice(0, 1);
         setCardList(returnedBeast);
       }
-      
-
-
-      // console.log('+++++++++++ OUR BOYS +++++++++++++++');
-      // console.log(getOnes, getOnes.length, getOnesTotal);
-      // console.log(getTens, getTens.length, getTensTotal);
-      // console.log(getTwentyFives, getTwentyFives.length, getTwentyFivesTotal);
-      // console.log(getFiftys, getFiftys.length, getFiftysTotal);
-      // console.log('++++++++++++++++++++++++++++++++++++');
-      
-      // filteredList.sort(() => 0.5 - Math.random());
-      // console.log('THE INPUT', parseInput);
-      console.log('RNG', totalGenerator);
-      // setCardList(filteredList);
-      // if (sumFiltered !== parseInput){
-      //   const filteredList2 = bestiary.filter((best) => {
-      //     const isDifficulty = parseInt(inputedDifficulty) === best.difficulty;
-      //     const isSelectedType = selectedType.length === 0 || selectedType.includes(best.creatureType);
-      //     return isSelectedType && isDifficulty;
-      //   })
-      //   filteredList2.sort(() => 0.5 - Math.random());
-      //   filteredList2.sort((a, b) => b.difficulty - a.difficulty);
-      //   const returnedBeast = filteredList2.slice(0, 1);
-      //   setCardList(returnedBeast);
-        // const sumFiltered2 = filteredList2.reduce((a, b) => a = a + b.difficulty, 0);
-        // const numberByLenght = filteredList2.length;
-        // const sumFiltered3 = sumFiltered2;
-        // console.log("ed go home you are tired", numberByLenght);
-        // const filteredTotal = sumFiltered2 / numberByLenght;
-        // console.log('return numberByLenght ed you dumb bro', numberByLenght);
-        // console.log('return my bs', filteredTotal);
-        
-        // const bestTotalFiltered = bestiary.reduce((a, b) => a = a + b.difficulty, 0);
-        // const numberByLenght = bestiary.length;
-        // const filteredTotal = bestTotalFiltered / numberByLenght;
-        // console.log('return filteredList2', filteredList2);
-
-        // console.log('first condition', sumFiltered3);
-        // console.log('second condition', parseInput);
-        // console.log('thrid condition', totalGenerator);
-
-        // if (sumFiltered3 === parseInput && totalGenerator === 1) {
-        //   const filteredList3 = bestiary.filter((best) => {
-        //     const isDifficulty = inputedDifficulty.length === 0 || parseInt(inputedDifficulty) > best.difficulty;
-        //     const isSelectedType = selectedType.length === 0 || selectedType.includes(best.creatureType);
-        //     return isSelectedType && isDifficulty;
-        //   })
-        //   setCardList(filteredList3);
-        // }
-      //}
     } else {
       setCardList(bestiary);
     }
