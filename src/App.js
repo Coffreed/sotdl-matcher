@@ -4,6 +4,7 @@ import CardGrid from './components/common/CardGrid';
 import SearchElement from './components/common/SearchElement';
 import DropdownElement from './components/common/DropdownElement';
 import bestiary from './data/bestiaryData.json'
+import { getMultipleCards } from './components/functions/getMultipleCards';
 
 function App() {
   const [cardList, setCardList] = useState(false);
@@ -89,33 +90,11 @@ function App() {
         console.log('totalDifficultyFilteredList', totalDifficultyFilteredList);
         // checks if total difficulty in filtered list is less than inputted value
         if (totalDifficultyFilteredList > parseInput) {
-          const matchOnes = getOnes.length * 1;
-          const matchTens = getTens.length * 10;
-          const matchTwentyFives = getTwentyFives.length * 25;
-          const matchFiftys = getFiftys.length * 50;
-          const matchHundreds = getHundreds.length * 100;
-          const matchTwoHundredFiftys = getTwoHundredFiftys.length * 250;
-          const matchFiveHundreds = getFiveHundreds.length * 500;
-          if (parseInput === matchOnes) {
-            return setCardList(getOnes);
-          } else if (parseInput === matchTens) {
-            return setCardList(getTens);
-          } else if (parseInput === matchTwentyFives) {
-            return setCardList(getTwentyFives);
-          } else if (parseInput === matchFiftys) {
-            return setCardList(getFiftys);
-          } else if (parseInput === matchHundreds) {
-            return setCardList(getHundreds);
-          } else if (parseInput === matchTwoHundredFiftys) {
-            return setCardList(getTwoHundredFiftys);
-          } else if (parseInput === matchFiveHundreds) {
-            return setCardList(getFiveHundreds);
-          }
+          const getCards = getMultipleCards({parseInput, getOnes, getTens, getTwentyFives, getFiftys, getHundreds, getTwoHundredFiftys, getFiveHundreds});
+          setCardList(getCards);
         } else {
           setCardList(filteredList);
         }
-        console.log(filteredList, 'filteredlist');
-        setCardList(filteredList);
       } else {
         const filteredList2 = bestiary.filter((best) => {
           const isDifficulty = parseInput === best.difficulty;
