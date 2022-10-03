@@ -34,17 +34,17 @@ const CardElement = ({data}) => {
                 <span className="card-title i">{creatureType}</span>
                 </div>
 
-                <div className="flexRow">
+                <div className="baseInfo1">
                 <span className="card-text b gap remove-bottom-margin">Perception</span>
                 <span className="card-text">{perception}</span>
                 </div>
-                <div className="flexRow">
+                <div className="baseInfo2">
                 <span className="card-text b gap remove-bottom-margin">Defense</span>
                 <span className="card-text gap remove-bottom-margin">{defense}</span>
                 <span className="card-text b gap remove-bottom-margin">Health</span>
                 <span className="card-text remove-bottom-margin">{health}</span>
                 </div>
-                <div className="flexRow">
+                <div className="baseInfo3">
                 <span className="card-text b gap remove-bottom-margin">Strength</span>
                 <span className="card-text gap remove-bottom-margin">{strength}</span>
                 <span className="card-text b gap remove-bottom-margin">Agility</span>
@@ -54,7 +54,7 @@ const CardElement = ({data}) => {
                 <span className="card-text b gap remove-bottom-margin">Will</span>
                 <span className="card-text gap remove-bottom-margin">{will}</span>
                 </div>
-                <div className="flexRow">
+                <div className="baseInfo4">
                 <span className="card-text b gap remove-bottom-margin">Speed</span>
                 <span className="card-text">{speed}</span>
                 </div>
