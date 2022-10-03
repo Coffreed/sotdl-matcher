@@ -1,18 +1,5 @@
 import React, {useState} from "react";
-import butcher from "../../images/butcher.jpg";
-import devil from "../../images/devil.PNG";
-import animal from "../../images/animal.PNG"
-import undead from "../../images/undead.PNG"
-import undead1 from "../../images/undead1.PNG"
-import animalSwarm from "../../images/animalswarm.PNG"
-import beastman from "../../images/beastman.PNG"
-import faerie from "../../images/faerie.PNG"
-import monster from "../../images/monster.PNG"
-import clockwork from "../../images/clockwork.PNG"
-import construct from "../../images/construct.jpg"
-import demon1 from "../../images/demon1.PNG"
-import dwarf from "../../images/dwarf.PNG"
-import fungus from "../../images/fungus.PNG"
+import MatchCreatureType from '../MatchCreatureType'
 
 const CardElement = ({data}) => {
     const { id, name, difficulty, size, frightening, horrifying, creatureType, 
@@ -23,23 +10,16 @@ const CardElement = ({data}) => {
     const toggleButton = () => {
         setToggle(prevState => !prevState)
     };
+    const getNameString = name.replace(/ /g, '');
+    const getCreatureTypeString = creatureType.replace(/[^a-zA-Z]/g, '');
 
     return (
         <div className="col">
             <div className="card">
-            <span>{ creatureType === "demon" ? <img src={demon1} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "faerie (devil)" ? <img src={devil} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "animal" ? <img src={animal} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "undead" && frightening ? <img src={undead} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "animal (swarm)" ? <img src={animalSwarm} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "undead" && horrifying ? <img src={undead1} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "beastman" ? <img src={beastman} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "faerie" ? <img src={faerie} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "monster" ? <img src={monster} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "clockwork" ? <img src={clockwork} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "construct" ? <img src={construct} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "dwarf" ? <img src={dwarf} className="card-img-top" alt="..." /> : null }</span>
-            <span>{ creatureType === "fungus" ? <img src={fungus} className="card-img-top" alt="..." /> : null }</span>
+            <span className="MatchImages">
+                <img src={MatchCreatureType[getCreatureTypeString]} className="card-img-top" alt="..." />
+            </span>
+
             <div className="card-body">
             
                 <div className="flexRow bg-black">
