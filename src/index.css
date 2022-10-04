@@ -1,4 +1,4 @@
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 320px) {
   /* For phones: */
   .flexRow {
     display: flex;
@@ -6,7 +6,7 @@
   }
   .cardGrid {
     display: grid;
-    grid-template-columns: 19rem;
+    grid-template-columns: 18rem;
     grid-gap: 1rem;
     grid-auto-flow: row;
     grid-auto-columns: min-content;
@@ -36,6 +36,10 @@
     flex-direction: row;
   }
   .baseInfo4 {
+    display: flex;
+    flex-direction: row;
+  }
+  .baseInfo5 {
     display: flex;
     flex-direction: row;
   }
@@ -74,11 +78,16 @@
   }
   .baseInfo3 {
     display: flex;
-    flex-direction: row;
   }
   .baseInfo4 {
     display: flex;
+  }
+  .baseInfo5 {
+    display: flex;
     flex-direction: row;
+  }
+  .baseStats {
+    display: flex;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -93,15 +102,6 @@
     grid-gap: 1rem;
     grid-auto-flow: row;
     grid-auto-columns: min-content;
-  }
-  .bg-black {
-    background-color: black;
-    color: white;
-    padding-top: 5px;
-  }
-  .bg-crimson {
-    background-color: crimson;
-    color: white;
   }
 }
 

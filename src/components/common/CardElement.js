@@ -44,17 +44,21 @@ const CardElement = ({data}) => {
                 <span className="card-text b gap remove-bottom-margin">Health</span>
                 <span className="card-text remove-bottom-margin">{health}</span>
                 </div>
-                <div className="baseInfo3">
-                <span className="card-text b gap remove-bottom-margin">Strength</span>
-                <span className="card-text gap remove-bottom-margin">{strength}</span>
-                <span className="card-text b gap remove-bottom-margin">Agility</span>
-                <span className="card-text gap remove-bottom-margin">{agility}</span>
-                <span className="card-text b gap remove-bottom-margin">Intellect</span>
-                <span className="card-text gap remove-bottom-margin">{intellect}</span>
-                <span className="card-text b gap remove-bottom-margin">Will</span>
-                <span className="card-text gap remove-bottom-margin">{will}</span>
+                <div className="baseStats">
+                    <div className="baseInfo3">
+                    <span className="card-text b gap remove-bottom-margin">Strength</span>
+                    <span className="card-text gap remove-bottom-margin">{strength}</span>
+                    <span className="card-text b gap remove-bottom-margin">Agility</span>
+                    <span className="card-text gap remove-bottom-margin">{agility}</span>
+                    </div>
+                    <div className="baseInfo4">
+                    <span className="card-text b gap remove-bottom-margin">Intellect</span>
+                    <span className="card-text gap remove-bottom-margin">{intellect}</span>
+                    <span className="card-text b gap remove-bottom-margin">Will</span>
+                    <span className="card-text gap remove-bottom-margin">{will}</span>
+                    </div>
                 </div>
-                <div className="baseInfo4">
+                <div className="baseInfo5">
                 <span className="card-text b gap remove-bottom-margin">Speed</span>
                 <span className="card-text">{speed}</span>
                 </div>
