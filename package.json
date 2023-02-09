@@ -1,5 +1,5 @@
 {
-  "name": "bestiary-difficulty-matcher",
+  "name": "sotdl-matcher",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
